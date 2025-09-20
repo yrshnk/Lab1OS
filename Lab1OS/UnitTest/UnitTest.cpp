@@ -70,7 +70,7 @@ public:
 
     TEST_METHOD(RunsWholePipeline) {
         ofstream creatorIn("creator_input.txt");
-        creatorIn << "1 Roflik 15\n";  
+        creatorIn << "1 Person 15\n";  
         creatorIn.close();
 
         remove("empl.bin");
@@ -85,7 +85,7 @@ public:
         employee e{};
         bin.read((char*)&e, sizeof(e));
         Assert::AreEqual(1, e.num);
-        Assert::AreEqual(string("Roflik"), string(e.name));
+        Assert::AreEqual(string("Person"), string(e.name));
         Assert::AreEqual(15.0, e.hours);
 
         string reporterCmd = "Reporter.exe empl.bin report.txt 15";
@@ -99,7 +99,7 @@ public:
         while (getline(rep, line)) {
             all += line + "\n";
         }
-        Assert::IsTrue(all.find("Roflik") != string::npos);
+        Assert::IsTrue(all.find("Person") != string::npos);
         Assert::IsTrue(all.find("225") != string::npos); 
     }
 };
