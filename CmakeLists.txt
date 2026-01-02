@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.16)
+project(Lab1_CreateProcesses)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(Creator src/Creator.cpp src/employee.h)
+add_executable(Reporter src/Reporter.cpp src/employee.h)
+add_executable(Main src/Main.cpp src/employee.h)
+
+if(WIN32)
+    target_link_libraries(Main PRIVATE kernel32)
+endif()
+
+enable_testing()
+add_subdirectory(tests)
